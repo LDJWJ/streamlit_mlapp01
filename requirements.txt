@@ -5,3 +5,6 @@ seaborn
 langchain
 openai
 langchain-community
+scikit-learn
+pillow 
+opencv-python
