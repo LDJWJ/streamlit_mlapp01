@@ -1,6 +1,5 @@
 
 import streamlit as st
 
-
-# 첫 앱 만들기
-st.title("첫 앱 만들기")
+st.title('내 첫 Streamlit 앱')
+st.write('Hello, World!')
