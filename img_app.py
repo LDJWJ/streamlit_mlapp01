@@ -2,15 +2,6 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-# OpenAI API 초기화
-def init_api():
-    with open("chatgpt.env") as env:
-        for line in env:
-            key, value = line.strip().split("=")
-            os.environ[key] = value
-
-init_api()
-
 # OpenAI 클라이언트 초기화
 openai_api_key = st.secrets["openai"]["api_key"]
 client = OpenAI(api_key  = openai_api_key)
