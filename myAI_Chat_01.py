@@ -19,5 +19,4 @@ with st.form('my_form'):
   if not openai_api_key.startswith('sk-'):
     st.warning('OpenAI API 인증키를 입력해 주세요!', icon='⚠')
   if submitted and openai_api_key.startswith('sk-'):
-    
     generate_response(text)
