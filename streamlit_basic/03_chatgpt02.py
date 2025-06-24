@@ -22,12 +22,12 @@ if "messages" not in st.session_state:
         {"role": "system", 
          "content": "기본적으로 한국어와 영어로 제공해 주세요."
                 "당신은 여행에 관한 질문에 답하는 챗봇입니다. "
-                "여행지 추천, 준비물, 문화, 음식 등 다양한 주제에 대해 친절하게 안내해 주세요. "
+                "여행지 추천, 준비물, 문화, 음식 등 다양한 주제에 대해 친절하게 안내하는 챗봇입니다."
                     }  
     ]
 
 # 사용자 입력
-user_input = st.text_input("당신:", key="user_input")
+user_input = st.text_input("사용자:", key="user_input")
 
 # 대화 초기화 버튼 추가
 if st.button("대화 초기화") and st.session_state.messages:
@@ -40,13 +40,12 @@ if st.button("전송") and user_input:
 
     # OpenAI API 호출
     response = client.chat.completions.create(
-        model="gpt-4o-mini",  # gpt-4로 변경
+        model="gpt-4o-mini",  # gpt-4o-mini로 변경
         messages=st.session_state.messages
     )
 
     # OpenAI 응답 추가
     response_message = response.choices[0].message.content
-    # st.session_state.messages.append(response_message)
     st.session_state.messages.append({"role": "assistant", 
                                       "content": response_message})
 
@@ -55,7 +54,5 @@ if st.button("전송") and user_input:
 
 # 대화 내용 표시
 for message in st.session_state.messages:
-    # st.markdown(message)
     role = "👤"  if message["role"] == "user" else "🤖"
-    # st.markdown(f"👤: {response_message}")
     st.markdown(f"{role}: {message['content']}")

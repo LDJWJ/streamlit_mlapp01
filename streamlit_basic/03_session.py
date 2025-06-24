@@ -1,3 +1,8 @@
+# Streamlit의 
+# 1. 세션 상태 관리(st.session_state)
+# 2. 위젯(st.color_picker, st.header, st.divider)
+# 3. 대화형 차트(st.scatter_chart)
+
 import streamlit as st
 import pandas as pd
 import numpy as np

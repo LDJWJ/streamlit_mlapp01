@@ -1,3 +1,7 @@
+# openai, OpenAI: OpenAI API 호출을 위한 라이브러리
+# streamlit: 웹 UI 프레임워크
+# os: (현재 예제에서는 사용되지 않음) 환경 변수 접근 또는 파일 경로 처리 용도
+
 import openai
 import streamlit as st
 from openai import OpenAI
@@ -18,6 +22,10 @@ if not openai_api_key:
 client = OpenAI(api_key  = openai_api_key)
 
 # 초기 대화 상태 설정
+# Streamlit 앱은 새로고침마다 상태가 초기화되는데, st.session_state를 쓰면 
+#   사용자별 세션에 데이터를 유지할 수 있음.
+# st.session_state에는 여러 개의 변수를 자유롭게 지정하고 저장할 수 있음.
+# 숫자, 문자열, 리스트(대화 이력 등) 저장 가능.
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -31,7 +39,7 @@ if st.button("전송") and user_input:
 
     # OpenAI API 호출
     response = client.chat.completions.create (
-        model = "gpt-3.5-turbo",
+        model = "gpt-4o-mini",
         messages = st.session_state.messages
     )
 
@@ -46,7 +54,6 @@ if st.button("전송") and user_input:
 
 # 대화 내용 표시
 for message in st.session_state.messages:
-    # st.markdown(message)
-    role = "👤"  #  if message["role"] == "user" else "🤖"
-    st.markdown(f"👤: {response_message}")
+    icon = "👤"  if message["role"] == "user" else "🤖"
+    st.markdown(f"{icon}: {message['content']}")
 

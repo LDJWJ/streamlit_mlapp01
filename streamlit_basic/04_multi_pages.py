@@ -5,6 +5,19 @@
 # 각 페이지는 독립적인 Streamlit 애플리케이션처럼 작동하므로 코드와 내용이 
 # 독립적입니다.
 
+'''
+your_app/
+│
+├── streamlit_app.py      ← 메인 페이지 스크립트
+│
+└── pages/                ← 추가 페이지들은 이 폴더에 넣기
+    ├── 1_About.py        ← 페이지 파일명 앞에 숫자 붙이면 순서 지정 가능
+    ├── 2_Contact.py
+    └── 3_Help.py
+'''
+
+
+
 import streamlit as st
 
 st.title("Main Page")
