@@ -69,6 +69,9 @@ if st.button("전송") and user_input:
 
 # 대화 내용 및 다국어 번역 출력
 for message in st.session_state.messages:
+    # 시스템 메시지는 출력하지 않음
+    if message["role"] == "system":
+        continue
     # 역할별 아이콘 선택
     if message["role"] == "user":
         icon = "👤"
@@ -77,12 +80,5 @@ for message in st.session_state.messages:
     else:
         icon = ""
 
-    # 원본 메시지 출력
+    # 메시지 출력
     st.markdown(f"{icon} {message['content']}")
-
-    # 어시스턴트 메시지일 때만 선택 언어별 번역 예시 출력
-    if message["role"] == "assistant":
-        for lang in selected_languages:
-            if lang != "한국어":
-                # 실제 번역 로직을 여기에 연결하세요.
-                st.markdown(f"🤖 ({lang}): {message['content']} ({languages[lang]})")
