@@ -11,7 +11,6 @@ def resize_image(image, max_size):
 # Streamlit 앱
 def main():
     st.title("이미지 크기 조정 앱")
-
     st.write("이미지를 업로드하고, 크기를 줄일 수 있습니다.")
 
     # 이미지 파일 업로드
