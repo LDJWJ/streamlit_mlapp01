@@ -18,8 +18,6 @@
  - 함수 인수가 바뀌면(다른 URL 등) 캐시가 무효화되고, 다시 다운로드
 
 '''
-
-
 import streamlit as st
 import pandas as pd
 
